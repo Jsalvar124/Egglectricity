@@ -13,10 +13,16 @@ Egglectricity is a Spring Boot application for managing an online store for elec
 2. **Configure the database:**
    Update src/main/resources/application.properties with your database credentials:
    ```sh
-   spring.datasource.url=jdbc:postgresql://localhost:5432/egglectricity
-   spring.datasource.username=your_username
-   spring.datasource.password=your_password
-   spring.jpa.hibernate.ddl-auto=update
+   spring.application.name=egglectricity
+   spring.datasource.url:jdbc:mysql://localhost:3307/egglectricity?allowPublicKeyRetrieval=true&useSSL=false&useTimezone=true&serverTimezone=GMT&characterEncoding=UTF-8
+   spring.datasource.username: your_username
+   spring.datasource.password: your_password
+   spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+   spring.jpa.show-sql:true
+   spring.jpa.hibernate.ddl-auto: update
+   #spring.jpa.hibernate.ddl-auto: create-drop
+   spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.MySQLDialect
+   spring.thymeleaf.cache: false
    ```
    > This application uses MySQL. By default, MySQL runs on port `3306`, but on the development machine, port `3307` was used because `3306` was occupied.
    - You can use `3306` if it's available on your system.
