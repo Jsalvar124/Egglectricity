@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/head :: head}"></head>
+
+<body>
+<header>
+    <nav th:replace="~{fragments/navbar :: nav}"></nav>
+</header>
+
+<main>
+    <h2>Factories</h2>
+
+    <!-- Add New Factory Button -->
+    <div class="add-button-container" sec:authorize="hasRole('ADMIN')">
+        <a th:href="@{/factories/add}" class="btn btn-primary">➕ Add New Factory</a>
+    </div>
+
+    <!-- Display errors or success. -->
+    <div class="error-message" th:if="${error}" th:text="${error}"></div>
+<!--    <div class="success-message" th:if="${success}" th:text="${success}"></div>-->
+    <table class="table table-dark">
+        <thead>
+        <tr>
+            <th scope="col">Factory Id</th>
+            <th scope="col">Factory Name</th>
+            <th scope="col" sec:authorize="hasRole('ADMIN')">Actions</th>
+
+        </tr>
+        </thead>
+        <tbody th:each="factory : ${factories}">
+        <tr>
+            <th scope="row" th:text="${factory.id}"></th>
+            <td th:text="${factory.name}"></td>
+            <td sec:authorize="hasRole('ADMIN')">
+                <a th:href="@{/factory/modify/__${factory.id}__}"><i>🖋</i> Modify </a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+
+</main>
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+</body>
+
+</html>

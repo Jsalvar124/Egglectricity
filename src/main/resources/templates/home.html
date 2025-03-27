@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/head :: head}"></head>
+<body>
+<header>
+    <nav th:replace="~{fragments/navbar :: nav}"></nav>
+</header>
+<div class="error-message" th:if="${error}" th:text="${error}"></div>
+<div class="success-message" th:if="${success}" th:text="${success}"></div>
+
+<main>
+    <section class="welcome">
+        <h2>Home Egglectricity House! 🥚⚡</h2>
+        <h3 th:if="${session.userSession != null}" th:text=" 'Welcome Back '+ ${session.userSession.name} "></h3>
+
+        <p>Your store for electric products</p>
+    </section>
+</main>
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+
+</body>
+</html>

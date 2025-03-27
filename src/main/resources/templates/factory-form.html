@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head}"></head>
+<body>
+<header>
+    <nav th:replace="~{fragments/navbar :: nav}"></nav>
+</header>
+<main>
+    <div class="factory-form-container">
+        <h2>Add New Factory</h2>
+
+        <div class="error-message" th:if="${error}" th:text="${error}"></div>
+        <div class="success-message" th:if="${success}" th:text="${success}"></div>
+
+        <form th:action="@{/factories/add}" method="post">
+            <div class="input-group">
+                <label for="name">Factory Name:</label>
+                <input type="text" id="name" name="name">
+            </div>
+
+            <button type="submit">Create Factory</button>
+        </form>
+
+        <p><a href="/factories/list">⬅ Back to List</a></p>
+    </div>
+</main>
+
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head}"></head>
+<body>
+    <header>
+        <nav th:replace="~{fragments/navbar :: nav}"></nav>
+    </header>
+    <div class="error-message" th:if="${error}" th:text="${error}"></div>
+    <div class="success-message" th:if="${success}" th:text="${success}"></div>
+
+    <main>
+        <section class="welcome">
+            <h2>Welcome to the Egglectricity House! 🥚⚡</h2>
+            <p>Your store for electric products</p>
+            <p>Please Register or Login</p>
+        </section>
+    </main>
+
+    <footer th:replace="~{fragments/footer :: footer}"></footer>
+
+</body>
+</html>

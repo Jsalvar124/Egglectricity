@@ -1,0 +1,11 @@
+<nav>
+    <h1><a class="nav-logo" th:href="${session.userSession != null} ? '/home' : '/'">Egglectricity!🥚⚡</a></h1>
+    <div class="buttons">
+        <a th:if="${session.userSession == null}" href="/auth/register" class="btn">Register</a>
+        <a th:if="${session.userSession == null}" href="/auth/login" class="btn">Login</a>
+        <a th:if="${session.userSession != null}" href="/factories/list" class="btn">Factories</a>
+        <a th:if="${session.userSession != null}" href="/articles/list" class="btn">Articles</a>
+        <a th:if="${session.userSession != null}" href="/logout" class="btn">Logout</a>
+
+    </div>
+</nav>
