@@ -6,12 +6,12 @@ Egglectricity is a Spring Boot application for managing an online store for elec
 
 1. **Clone the Repository**
    ```sh
-   git clone <repository-url>
+   git clone https://github.com/Jsalvar124/Egglectricity.git
    cd egglectricity
    ```
 
 2. **Database Setup**
-   - This application uses MySQL. By default, MySQL runs on port `3306`, but on the development machine, port `3307` was used because `3306` was occupied.
+   > This application uses MySQL. By default, MySQL runs on port `3306`, but on the development machine, port `3307` was used because `3306` was occupied.
    - You can use `3306` if it's available on your system.
    - Create a new database:
      ```sql
