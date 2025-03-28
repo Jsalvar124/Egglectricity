@@ -40,7 +40,7 @@ public class AuthController {
         try{
             userService.register(name, lastName, email, password, repeatPassword);
             model.put("success", "User registration successful!");
-            return "redirect:/auth/login";
+            return "index.html";
         }catch (InvalidInputException e) {
             model.put("error", e.getMessage());
             model.put("name", name);
