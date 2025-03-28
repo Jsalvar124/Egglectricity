@@ -1,5 +1,8 @@
 <nav>
-    <h1><a class="nav-logo" th:href="${session.userSession != null} ? '/home' : '/'">Egglectricity!🥚⚡</a></h1>
+    <h1>
+        <a class="nav-logo" th:href="@{/home}" sec:authorize="isAuthenticated()">Egglectricity!🥚⚡</a>
+        <a class="nav-logo" th:href="@{/}" sec:authorize="!isAuthenticated()">Egglectricity!🥚⚡</a>
+    </h1>
     <div class="buttons">
         <a sec:authorize="!isAuthenticated()" href="/auth/register" class="btn">Register</a>
         <a sec:authorize="!isAuthenticated()" href="/auth/login" class="btn">Login</a>
