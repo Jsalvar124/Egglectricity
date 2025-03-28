@@ -21,8 +21,8 @@ COPY src ./src
 RUN ./mvnw clean package -DskipTests && \
     mv target/*SNAPSHOT.jar target/egglectricity.jar
 
-# Expose the default Spring Boot port
-EXPOSE 8080
+# Remove the default Spring Boot port
+# EXPOSE 8080
 
 # Run the application with environment variables
-CMD ["sh", "-c", "java -jar target/egglectricity.jar --spring.datasource.url=jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME} --spring.datasource.username=${DB_USERNAME} --spring.datasource.password=${DB_PASSWORD}"]
+CMD ["sh", "-c", "java -jar target/egglectricity.jar --server.port=${PORT} --spring.datasource.url=jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME} --spring.datasource.username=${DB_USERNAME} --spring.datasource.password=${DB_PASSWORD}"]

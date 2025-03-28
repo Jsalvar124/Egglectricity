@@ -2,6 +2,7 @@ package com.egg.egglectricity.controllers;
 
 import com.egg.egglectricity.exceptions.InvalidInputException;
 import com.egg.egglectricity.services.UserService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -17,12 +18,17 @@ public class AuthController {
     @Autowired
     UserService userService;
     @GetMapping("/login")
-    public String login(@RequestParam(required = false) String error, ModelMap model) {
+    public String login(@RequestParam(required = false) String error, ModelMap model, HttpSession session) {
+        if (session.getAttribute("userSession") != null) {
+            return "redirect:/home"; // Avoid redirect loop ADDED
+        }
         if (error != null) {
             model.put("error", "Invalid credentials!");
         }
         return "login-form.html";
     }
+
+
 
     @GetMapping("/register")
     public String register() {
@@ -40,7 +46,6 @@ public class AuthController {
             model.put("name", name);
             model.put("email", email);
             model.put("lastName", lastName);
-            model.put("password", password);
             return "register-form.html";
         }
     }
