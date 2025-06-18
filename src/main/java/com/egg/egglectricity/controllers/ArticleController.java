@@ -56,6 +56,8 @@ public class ArticleController {
         try{
             Article article = articleService.create(name, description, factoryId);
             model.put("success", "Article successfully created");
+            List<Factory> factories = factoryService.list();
+            model.put("factories", factories);
             return "article-form.html";
         } catch (InvalidInputException | ResourceNotFoundException e) {
             logger.error("Error creating articles: {}", e.getMessage(), e);
