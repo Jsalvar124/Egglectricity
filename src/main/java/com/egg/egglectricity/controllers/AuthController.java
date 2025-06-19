@@ -18,10 +18,7 @@ public class AuthController {
     @Autowired
     UserService userService;
     @GetMapping("/login")
-    public String login(@RequestParam(required = false) String error, ModelMap model, HttpSession session) {
-        if (session.getAttribute("userSession") != null) {
-            return "redirect:/home"; // Avoid redirect loop ADDED
-        }
+    public String login(@RequestParam(required = false) String error, ModelMap model) {
         if (error != null) {
             model.put("error", "Invalid credentials!");
         }
